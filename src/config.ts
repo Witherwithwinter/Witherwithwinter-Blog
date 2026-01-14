@@ -181,7 +181,7 @@ export const siteConfig: SiteConfig = {
 	favicon: [
 		// 留空以使用默认 favicon
 		{
-		  src: '/favicon/icon.png',    // 图标文件路径
+		  src: '/favicon/favicon.ico',    // 图标文件路径
 		  theme: 'light',              // 可选，指定主题 'light' | 'dark'
 		  sizes: '32x32',              // 可选，图标大小
 		}
@@ -440,7 +440,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "Announcement", // 公告标题
-	content: "Welcome to my blog! Hope you have a nice day! OvO", // 公告内容
+	content: "如果歌单加载失败，请刷新页面。如果看不见目录组件，请缩小网站比例。", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接

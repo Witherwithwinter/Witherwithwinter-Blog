@@ -209,6 +209,9 @@ export const timelineData: TimelineItem[] = [
         description: "Participated in The 2025 ICPC China National Invitational Programming Contest(Nanchang).",
         type: "achievement",
         startDate: "2025-05-18",
+        endDate: "2025-05-18",
+        location: "Nanchang",
+        organization: "Jiangxi Normal University",
         skills: ["C++", "Algorithms", "Data Structures"],
         achievements: [
             "Won \"Iron \" prize in Nanchang",
@@ -224,6 +227,8 @@ export const timelineData: TimelineItem[] = [
         description: "Participated in The 2025 CCPC National Invitational Programming Contest(Fuzhou).",
         type: "achievement",
         startDate: "2025-06-21",
+        endDate: "2025-06-21",
+        organization: "Fuzhou University",
         skills: ["C++", "Algorithms", "Data Structures"],
         achievements: [
             "Won \"Iron \" prize in CCPC",
@@ -237,7 +242,10 @@ export const timelineData: TimelineItem[] = [
         title: "First ICPC Regional Contest",
         description: "Participated in The 2025 ICPC Asia Shanghai Regional Contest",
         type: "achievement",
-        startDate: "2025-05-18",
+        startDate: "2025-11-22",
+        endDate: "2025-11-23",
+        location: "Shanghai",
+        organization: "Shanghai Normal University",
         skills: ["C++", "Algorithms", "Data Structures"],
         achievements: [
             "Won \"Iron \" prize in Shanghai",
