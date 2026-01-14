@@ -6,17 +6,17 @@ category: Tutorial
 draft: false
 ---
 
-# 我的感受
+# 鎴戠殑鎰熷彈
 
-# 题解
+# 棰樿В
 
 ## A - Social Experiment
 
-### 题意
+### 棰樻剰
 
-### 思路
+### 鎬濊矾
 
-### 代码
+### 浠ｇ爜
 ```cpp
 
 ```
@@ -33,7 +33,7 @@ draft: false
 
 ## G
 
-# 其他部分
+# 鍏朵粬閮ㄥ垎
 ```cpp
 #include <bits/stdc++.h>
 #define inf INT_MAX
