@@ -34,7 +34,6 @@ draft: false
 ## G
 
 # 其他部分
-
 ```cpp
 #include <bits/stdc++.h>
 #define inf INT_MAX
@@ -76,3 +75,4 @@ cin >> _;
 	return 0;
 }
 ```
+
