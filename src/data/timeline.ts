@@ -55,7 +55,7 @@ export const timelineData: TimelineItem[] = [
 		links: [
 			{
 				name: "GitHub Repository",
-				url: "https://github.com/Witherwithwinter/Witherwithwinter-Blog",
+				url: "https://github.com/Witherwithwinter/witherwithwinter.github.io",
 				type: "project",
 			},
 			{
