@@ -429,7 +429,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 export const commentConfig: CommentConfig = {
 	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
 	twikoo: {
-		envId: "https://witherwithwinterblog.vercel.app",
+		envId: "https://witherwithwinterblogcomment.vercel.app",
 		lang: "zh_CN",
 	},
 };
@@ -658,7 +658,7 @@ export const pioConfig: import("./types/config").PioConfig = {
 	mode: "draggable", // 默认为可拖拽模式
 	hiddenOnMobile: true, // 默认在移动设备上隐藏
 	dialog: {
-		welcome: "Welcome to Mizuki Website!", // 欢迎词
+		welcome: "Welcome to Witherwithwinter's Blog!", // 欢迎词
 		touch: [
 			"What are you doing?",
 			"Stop touching me!",
@@ -686,9 +686,9 @@ export const widgetConfigs = {
 
 export const umamiConfig = {
 	enabled: true, // 是否显示Umami统计
-	apiKey: "api_pGMNG5aLYYGWCpmDJNymFTmjeNShSx3o", // API密钥优先从环境变量读取，否则使用配置文件中的值
+	apiKey: "api_LVOFnHAM3WcjI7LmZBfrq3IQlOaGE9NN", // API密钥优先从环境变量读取，否则使用配置文件中的值
 	baseUrl: "https://api.umami.is", // Umami Cloud API地址
 	scripts: `
-<script defer src="https://cloud.umami.is/script.js" data-website-id="524f79a4-fa30-475d-b6da-4b8a4610321a"></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="cdeca17c-595b-43c2-9960-1bcd2d97a515"></script>
   `.trim(), // 上面填你要插入的Script,不用再去Layout中插入
 } as const;
