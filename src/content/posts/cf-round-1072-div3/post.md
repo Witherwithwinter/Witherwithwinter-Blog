@@ -63,12 +63,12 @@ G 题线段树上二分，题目读错了两次。可惜赛时没注意到 ans �
 ```cpp
 void solve()
 {
-	int n; 
+    int n; 
     cin >> n;
-    
-	if(n == 2 || n == 3) 
+
+    if(n == 2 || n == 3) 
         D(n);
-	else 
+    else 
         D(n % 2);
 }
 ```
@@ -111,14 +111,14 @@ void solve()
 ```cpp
 void solve()
 {
-	int s, k, m; 
+    int s, k, m; 
     cin >> s >> k >> m;
 
-	int n = m / k, d = m % k;          
-	int x = (s > k && (n % 2 == 1)) ? k : s;
-	int ans = max(x - d, 0LL);
+    int n = m / k, d = m % k;          
+    int x = (s > k && (n % 2 == 1)) ? k : s;
+    int ans = max(x - d, 0LL);
 
-	D(ans);
+    D(ans);
 }
 ```
 
@@ -149,46 +149,46 @@ BFS 模拟一下就好了。☝️🤓
 ```cpp
 struct step
 {
-	int x, s;
+    int x, s;
 };
 
 void solve()
 {
-	int n, k; 
+    int n, k; 
     cin >> n >> k;
 
-	if(n < k) 
-	{
-		D(-1);
-		return;
-	}
+    if(n < k) 
+    {
+        D(-1);
+        return;
+    }
 
-	set<int> vis;
-	queue<step> q;
-	q.push({n, 0});
+    set<int> vis;
+    queue<step> q;
+    q.push({n, 0});
 
-	while(!q.empty())
-	{
-		auto [x, s] = q.front();
+    while(!q.empty())
+    {
+        auto [x, s] = q.front();
 
-		if(x == k)
-		{
-			D(s);
-			return;
-		}
+        if(x == k)
+        {
+            D(s);
+            return;
+        }
 
-		q.pop();
-		if(vis.contains(x)) 
+        q.pop();
+        if(vis.contains(x)) 
             continue;
-		vis.insert(x);
+        vis.insert(x);
 
-		int a = x / 2, r = x % 2;
-		if(a >= k)  
+        int a = x / 2, r = x % 2;
+        if(a >= k)  
             q.push({a, s + 1});
-		if(r) q.push({a + 1, s + 1});
-	}
+        if(r) q.push({a + 1, s + 1});
+    }
 
-	D(-1);
+    D(-1);
 }
 ```
 
@@ -275,50 +275,50 @@ WTF！😱
 ```cpp
 void solve()
 {
-	int n, q;
-	cin >> n >> q;
+    int n, q;
+    cin >> n >> q;
 
-	vector<int> a(n);
-	vcin(a);
+    vector<int> a(n);
+    vcin(a);
 
-	SegTree st(a);
+    SegTree st(a);
 
-	while (q--)
-	{
-		int op;
-		cin >> op;
-		if (op == 1)
-		{
-			int p, x;
-			cin >> p >> x;
-			st.update(p - 1, x);
-		}
-		else
-		{
-			int l, r, ans = 0;
-			cin >> l >> r;
-			l--, r--;
-			if(l == r) 
-			{
-				D(0);
-				continue;
-			}
-			int lo = 0, hi = r - l;
-			while(lo <= hi) 
-			{
-				int mid = (lo + hi) >> 1;
-				int mn = st.queryMin(l, l + mid);
-				if(mn == mid) 
-				{
-					ans = 1;
-					break;
-				} 
-				else if (mn > mid)  lo = mid + 1;
-				else hi = mid - 1;
-			}
-			D(ans);
-		}
-	}
+    while (q--)
+    {
+        int op;
+        cin >> op;
+        if (op == 1)
+        {
+            int p, x;
+            cin >> p >> x;
+            st.update(p - 1, x);
+        }
+        else
+        {
+            int l, r, ans = 0;
+            cin >> l >> r;
+            l--, r--;
+            if(l == r) 
+            {
+                D(0);
+                continue;
+            }
+            int lo = 0, hi = r - l;
+            while(lo <= hi) 
+            {
+                int mid = (lo + hi) >> 1;
+                int mn = st.queryMin(l, l + mid);
+                if(mn == mid) 
+                {
+                    ans = 1;
+                    break;
+                } 
+                else if (mn > mid)  lo = mid + 1;
+                else hi = mid - 1;
+            }
+            D(ans);
+        }
+    }
 }
 ```
 
@@ -396,17 +396,17 @@ using namespace std;
 
 void solve()
 {
-	
+    
 }
 
 signed main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(nullptr);
-	int _ = 1;
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    int _ = 1;
 cin >> _;
-	while (_--)
-		solve();
-	return 0;
+    while (_--)
+        solve();
+    return 0;
 }
 ```
