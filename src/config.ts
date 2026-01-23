@@ -47,14 +47,14 @@ export const siteConfig: SiteConfig = {
 		projects: true, // 项目页面开关
 		skills: true, // 技能页面开关
 		timeline: true, // 时间线页面开关
-		albums: false, // 相册页面开关
+		albums: true, // 相册页面开关
 		devices: false, // 设备页面开关
 	},
 
 	// 顶栏标题配置
 	navbarTitle: {
 		// 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
-		mode: "logo",
+		mode: "text-icon",
 		// 顶栏标题文本
 		text: "Witherwithwinter",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
@@ -90,7 +90,7 @@ export const siteConfig: SiteConfig = {
 	// 标签样式配置
 	tagStyle: {
 		// 是否使用新样式（悬停高亮样式）还是旧样式（外框常亮样式）
-		useNewStyle: true,
+		useNewStyle: false,
 	},
 
 	// 壁纸模式配置
@@ -249,7 +249,7 @@ export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 			// "/assets/desktop-banner/6.webp",
 		], // 桌面横幅图片
 		mobile: [
-			"/assets/mobile-banner/my1.webp",
+			"/assets/mobile-banner/my.webp",
 			// "/assets/mobile-banner/2.webp",
 			// "/assets/mobile-banner/3.webp",
 			// "/assets/mobile-banner/4.webp",
@@ -318,11 +318,11 @@ export const navBarConfig: NavBarConfig = {
 					url: "/diary/",
 					icon: "material-symbols:book",
 				},
-				// {
-				// 	name: "Gallery",
-				// 	url: "/albums/",
-				// 	icon: "material-symbols:photo-library",
-				// },
+				{
+					name: "Gallery",
+					url: "/albums/",
+					icon: "material-symbols:photo-library",
+				},
 				// {
 				// 	name: "Devices",
 				// 	url: "devices/",
