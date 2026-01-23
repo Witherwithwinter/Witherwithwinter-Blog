@@ -116,12 +116,6 @@ export class WidgetManager {
 			classes.push(component.class);
 		}
 
-		// 双侧边栏模式下，右侧边栏的组件在平板端自动隐藏
-		// 使用 Tailwind 标准断点：lg(1024px) 以下全部隐藏
-		if (this.config.position === "both" && component.sidebar === "right") {
-			classes.push("hidden", "lg:block");
-		}
-
 		// 添加响应式隐藏类名
 		if (component.responsive?.hidden) {
 			component.responsive.hidden.forEach((device) => {

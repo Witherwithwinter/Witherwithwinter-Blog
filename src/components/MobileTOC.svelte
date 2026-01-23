@@ -319,9 +319,9 @@ if (typeof window !== "undefined") {
 </script>
 
 <!-- TOC toggle button for mobile -->
-<button 
-	on:click={togglePanel} 
-	aria-label="Table of Contents" 
+<button
+	on:click={togglePanel}
+	aria-label="Table of Contents"
 	id="mobile-toc-switch"
 	class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90 lg:!hidden theme-switch-btn"
 >
@@ -374,7 +374,7 @@ if (typeof window !== "undefined") {
 	{:else}
 		{#if tocItems.length === 0}
 			<div class="text-center py-8 text-black/50 dark:text-white/50">
-				<p>当前页面没有目录</p>
+				<p>{i18n(I18nKey.tocEmpty)}</p>
 			</div>
 		{:else}
 			<div class="toc-content">

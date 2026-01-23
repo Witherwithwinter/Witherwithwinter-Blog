@@ -47,8 +47,8 @@ const { remarkPluginFrontmatter } = await render(entry);
 		class:list={[
 			"pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative",
 			{
-				"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover,
-				"w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover,
+				"w-full md:w-[calc(100%_-_3.25rem_-_0.75rem)]": !hasCover,
+				"w-full md:w-[calc(100%_-_var(--coverWidth)_-_0.75rem)]": hasCover,
 			},
 		]}
 	>
@@ -59,7 +59,7 @@ const { remarkPluginFrontmatter } = await render(entry);
         active:text-[var(--title-active)] dark:active:text-[var(--title-active)]
         before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
         before:absolute
-        before:top-[35px] before:left-[18px] before:hidden md:before:block"
+        before:top-[2.1875rem] before:left-[1.125rem] before:hidden md:before:block"
 		>
 			{
 				pinned && (

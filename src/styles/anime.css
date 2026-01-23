@@ -14,19 +14,19 @@
   grid-template-columns: repeat(2, 1fr);
 }
 
-@container (min-width: 480px) {
+@container (min-width: 30rem) {
   .anime-grid-container.anime-grid-mode {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@container (min-width: 768px) {
+@container (min-width: 48rem) {
   .anime-grid-container.anime-grid-mode {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@container (min-width: 1024px) {
+@container (min-width: 64rem) {
   .anime-grid-container.anime-grid-mode {
     grid-template-columns: repeat(5, 1fr);
   }

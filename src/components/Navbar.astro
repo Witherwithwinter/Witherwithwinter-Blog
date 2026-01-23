@@ -40,12 +40,16 @@ let links: NavBarLink[] = navBarConfig.links.map(
     <div class:list={[className, "!overflow-visible max-w-[var(--page-width)] h-[4.5rem] mx-auto flex items-center justify-between px-4"]}>
         <a href={url('/')} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
             <div class="flex flex-row items-center text-md">
-                {/* 使用navbarTitle配置或默认配置 */}
+				{/* 使用navbarTitle配置或默认配置 */}
                 {siteConfig.navbarTitle ? (
-                    <>
-                        <img src={url(siteConfig.navbarTitle.icon || "/assets/home/home.png")} alt={siteConfig.navbarTitle.text} class="h-[1.75rem] w-[1.75rem] mb-1 mr-2 object-contain" loading="lazy" />
-                        <span class="dark:text-white text-black">{siteConfig.navbarTitle.text}</span>
-                    </>
+                    siteConfig.navbarTitle.mode === "logo" ? (
+                        <img src={url(siteConfig.navbarTitle.logo || "/assets/home/default-logo.png")} alt={siteConfig.navbarTitle.text} class="h-[2.5rem] object-contain" loading="lazy" />
+                    ) : (
+                        <>
+                            <img src={url(siteConfig.navbarTitle.icon || "/assets/home/home.png")} alt={siteConfig.navbarTitle.text} class="h-[1.75rem] w-[1.75rem] mb-1 mr-2 object-contain" loading="lazy" />
+                            <span class="dark:text-white text-black">{siteConfig.navbarTitle.text}</span>
+                        </>
+                    )
                 ) : (
                     <>
                         <Icon name="material-symbols:home-pin-outline" class="text-[1.75rem] mb-1 mr-2" />
@@ -54,14 +58,15 @@ let links: NavBarLink[] = navBarConfig.links.map(
                 )}
             </div>
         </a>
-        <div class="hidden md:flex items-center space-x-1">
+        <div id="navbar-links-container" class="hidden md:flex items-center space-x-1 transition-opacity duration-300">
             {links.map((l) => {
                 return <DropdownMenu link={l} />;
             })}
         </div>
-        <div class="flex">
-            <!--<SearchPanel client:load>-->
-            <Search client:only="svelte"></Search>
+        <div class="flex items-center gap-1">
+            <div id="search-container">
+                <Search client:only="svelte"></Search>
+            </div>
             {siteConfig.toc.enable && <MobileTOC client:only="svelte"></MobileTOC>}
             {!siteConfig.themeColor.fixed && (
                     <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
@@ -80,7 +85,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
             </div>
             <LightDarkSwitch client:only="svelte"></LightDarkSwitch>
             <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
-                <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
+                <Icon name="material-symbols:unfold-more" class="text-[1.25rem]"></Icon>
             </button>
         </div>
         <NavMenuPanel links={links}></NavMenuPanel>
@@ -89,15 +94,25 @@ let links: NavBarLink[] = navBarConfig.links.map(
 </div>
 
 <script>
-// function switchTheme() {
-//     if (localStorage.theme === 'dark') {
-//         document.documentElement.classList.remove('dark');
-//         localStorage.theme = 'light';
-//     } else {
-//         document.documentElement.classList.add('dark');
-//         localStorage.theme = 'dark';
-//     }
-// }
+	const searchContainer = document.getElementById("search-container");
+	const navbarLinksContainer = document.getElementById("navbar-links-container");
+
+	if (searchContainer && navbarLinksContainer) {
+		// 鼠标移入/触摸开始时隐藏导航链接
+		const hideLinks = () => {
+			if (window.matchMedia("(min-width: 1280px)").matches && window.matchMedia("(hover: hover)").matches) {
+				navbarLinksContainer.style.opacity = "0";
+			}
+		};
+
+		// 鼠标移出/触摸结束时显示导航链接
+		const showLinks = () => {
+			navbarLinksContainer.style.opacity = "1";
+		};
+
+		searchContainer.addEventListener("mouseenter", hideLinks);
+		searchContainer.addEventListener("mouseleave", showLinks);
+	}
 
 async function loadButtonScript() {
     try {

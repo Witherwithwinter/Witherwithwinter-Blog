@@ -61,7 +61,7 @@ const processedLinks: ProcessedNavBarLink[] = Astro.props.links.map(
                 <!-- 有子菜单的项目 -->
                 <div class="mobile-dropdown" data-mobile-dropdown>
                     <button 
-                        class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8 w-full text-left
+                        class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-4 w-full text-left
                             hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition"
                         data-mobile-dropdown-trigger
                         aria-expanded="false"
@@ -77,7 +77,7 @@ const processedLinks: ProcessedNavBarLink[] = Astro.props.links.map(
                     <div class="mobile-submenu" data-mobile-submenu>
                         {link.children.map((child) => (
                             <a href={child.external ? child.url : url(child.url)} 
-                               class="group flex justify-between items-center py-2 pl-6 pr-1 rounded-lg gap-8
+                               class="group flex justify-between items-center py-2 pl-6 pr-1 rounded-lg gap-4
                                    hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition"
                                target={child.external ? "_blank" : null}
                             >
@@ -94,7 +94,7 @@ const processedLinks: ProcessedNavBarLink[] = Astro.props.links.map(
                 </div>
             ) : (
                 <!-- 普通链接项目 -->
-                <a href={link.external ? link.url : url(link.url)} class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-8
+                <a href={link.external ? link.url : url(link.url)} class="group flex justify-between items-center py-2 pl-3 pr-1 rounded-lg gap-4
                     hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)] transition
                 "
                    target={link.external ? "_blank" : null}

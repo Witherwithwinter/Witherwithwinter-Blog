@@ -88,7 +88,7 @@ if (!album) {
 
       <!-- 照片网格 -->
       <div 
-        class={`photo-gallery moment-images ${album.layout === 'masonry' ? 'masonry-layout' : 'grid-layout'}`}
+        class={`photo-gallery ${album.layout === 'masonry' ? 'masonry-layout' : 'grid-layout'}`}
         data-layout={album.layout || 'grid'}
         data-columns={album.columns || 3}
       >
@@ -97,8 +97,7 @@ if (!album) {
             <a 
               href="javascript:void(0)"
               data-src={photo.src}
-              data-fancybox="gallery"
-              data-caption={photo.title || photo.alt}
+              data-fancybox={`gallery-${_index}`}
               class="block"
             >
               <img 
@@ -106,6 +105,7 @@ if (!album) {
                 alt={photo.alt}
                 class="photo-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
                 loading="lazy"
+                onload="this.removeAttribute('loading')"
               />
             </a>
           </figure>

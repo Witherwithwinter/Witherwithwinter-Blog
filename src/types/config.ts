@@ -77,8 +77,16 @@ export type SiteConfig = {
 
 	// 顶栏标题配置
 	navbarTitle?: {
+		mode?: "text-icon" | "logo"; // 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
 		text: string; // 顶栏标题文本
 		icon?: string; // 顶栏标题图标路径
+		logo?: string; // 网站Logo图片路径
+	};
+
+	// 页面自动缩放配置
+	pageScaling?: {
+		enable: boolean; // 是否开启自动缩放
+		targetWidth?: number; // 目标宽度，低于此宽度时开始缩放
 	};
 
 	// 添加字体配置
@@ -186,7 +194,7 @@ export enum LinkPreset {
 	Friends = 3,
 	Anime = 4,
 	Diary = 5,
-	Gallery = 6,
+	Albums = 6,
 	Projects = 7,
 	Skills = 8,
 	Timeline = 9,
@@ -365,8 +373,8 @@ export type SidebarLayoutConfig = {
 			desktop: number; // 桌面端断点（px）
 		};
 		layout: {
-			mobile: "hidden" | "bottom" | "drawer" | "sidebar"; // 移动端布局模式
-			tablet: "sidebar" | "bottom" | "drawer"; // 平板端布局模式
+			mobile: "hidden" | "sidebar"; // 移动端布局模式
+			tablet: "hidden" | "sidebar"; // 平板端布局模式
 			desktop: "sidebar"; // 桌面端布局模式
 		};
 	};

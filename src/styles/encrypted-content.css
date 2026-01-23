@@ -15,11 +15,6 @@
   @apply my-4;
 }
 
-#decrypted-content .expressive-code ::selection {
-  @apply bg-[var(--codeblock-selection)];
-  color: #ffffff;
-}
-
 /* frame容器样式 - 与expressive-code.css保持一致 */
 #decrypted-content .expressive-code .frame {
   @apply !shadow-none relative rounded-lg overflow-hidden;
@@ -299,12 +294,6 @@
 #decrypted-content .custom-md .expressive-code ul li::marker,
 #decrypted-content .custom-md .expressive-code ol li::marker {
   @apply text-inherit;
-}
-
-/* 确保代码块选择样式正确 */
-#decrypted-content .astro-code ::selection {
-  @apply bg-[var(--codeblock-selection)];
-  color: #ffffff;
 }
 
 /* 语言标识样式 - 模拟expressive-code的language-badge插件 */

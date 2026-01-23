@@ -68,21 +68,23 @@ function formatTime(dateString: string): string {
 				<!-- 短文列表 -->
 				<div class="moments-timeline">
 					<div class="timeline-list space-y-4">
-					{moments.map(moment => (
-						<div class="moment-item card-base p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all">
+					{moments.map((moment, index) => (
+						<div class="moment-item card-base-daily p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all">
 								<div class="moment-content">
 									<p class="moment-text text-sm md:text-base lg:text-lg text-90 leading-relaxed mb-3 md:mb-4">{moment.content}</p>
 									
 									{moment.images && moment.images.length > 0 && (
-				<div class="moment-images grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4">
+				<div class="diary-images grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4">
 					{moment.images.map((image, _index) => (
 					<div class="image-item relative rounded-md overflow-hidden aspect-square cursor-pointer hover:scale-105 transition-transform">
-						<img 
-							src={image} 
+						<a href="javascript:void(0)" data-src={image} data-fancybox={`gallery-${index}-${_index}`} class="block w-full h-full">
+							<img 
+								src={image} 
 								alt="diary moment image"
-							class="w-full h-full object-cover"
-							loading="lazy"
-						/>
+								class="w-full h-full object-cover"
+								loading="lazy"
+							/>
+						</a>
 					</div>
 					))}
 				</div>
@@ -115,8 +117,8 @@ function formatTime(dateString: string): string {
 </MainGridLayout>
 
 <style>
-	.card-base {
-		background: var(--card-bg);
+	.card-base-daily {
+		@apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)];
 		border: 1px solid var(--line-divider);
 		transition: all 0.3s ease;
 	}
@@ -187,7 +189,7 @@ function formatTime(dateString: string): string {
 			gap: 0.75rem;
 		}
 		
-		.moment-images {
+		.diary-images {
 			grid-template-columns: repeat(2, 1fr);
 		}
 		
@@ -214,7 +216,7 @@ function formatTime(dateString: string): string {
 			padding: 1.5rem;
 		}
 		
-		.moment-images {
+		.diary-images {
 			grid-template-columns: repeat(3, 1fr);
 			gap: 0.75rem;
 			max-width: 500px;
@@ -240,7 +242,7 @@ function formatTime(dateString: string): string {
 			padding: 2rem;
 		}
 		
-		.moment-images {
+		.diary-images {
 			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 			max-width: 600px;
 			gap: 1rem;

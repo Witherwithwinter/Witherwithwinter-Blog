@@ -16,6 +16,7 @@ enum I18nKey {
 	recentPosts = "recentPosts",
 	postList = "postList",
 	tableOfContents = "tableOfContents",
+	tocEmpty = "tocEmpty",
 
 	// 公告栏
 	announcement = "announcement",
@@ -56,7 +57,6 @@ enum I18nKey {
 	friendsTags = "friendsTags",
 	anime = "anime",
 	diary = "diary",
-	gallery = "gallery",
 
 	// 番剧页面
 	animeTitle = "animeTitle",
@@ -89,7 +89,28 @@ enum I18nKey {
 	backToHome = "backToHome",
 
 	// 音乐播放器
-	playlist = "playlist",
+	musicPlayer = "musicPlayer",
+	musicPlayerShow = "musicPlayerShow",
+	musicPlayerHide = "musicPlayerHide",
+	musicPlayerExpand = "musicPlayerExpand",
+	musicPlayerCollapse = "musicPlayerCollapse",
+	musicPlayerPause = "musicPlayerPause",
+	musicPlayerPlay = "musicPlayerPlay",
+	musicPlayerPrevious = "musicPlayerPrevious",
+	musicPlayerNext = "musicPlayerNext",
+	musicPlayerShuffle = "musicPlayerShuffle",
+	musicPlayerRepeat = "musicPlayerRepeat",
+	musicPlayerRepeatOne = "musicPlayerRepeatOne",
+	musicPlayerVolume = "musicPlayerVolume",
+	musicPlayerProgress = "musicPlayerProgress",
+	musicPlayerCover = "musicPlayerCover",
+	musicPlayerPlaylist = "musicPlayerPlaylist",
+	musicPlayerLoading = "musicPlayerLoading",
+	musicPlayerErrorPlaylist = "musicPlayerErrorPlaylist",
+	musicPlayerErrorSong = "musicPlayerErrorSong",
+	musicPlayerErrorEmpty = "musicPlayerErrorEmpty",
+	unknownSong = "unknownSong",
+	unknownArtist = "unknownArtist",
 
 	// 相册页面
 	albums = "albums",
@@ -291,6 +312,16 @@ enum I18nKey {
 	scanToRead = "scanToRead",
 	shareOnSocial = "shareOnSocial",
 	shareOnSocialDescription = "shareOnSocialDescription",
+
+	// 个人资料统计
+	profileStatsLoading = "profileStatsLoading",
+	profileStatsPageViews = "profileStatsPageViews",
+	profileStatsVisits = "profileStatsVisits",
+	profileStatsUnavailable = "profileStatsUnavailable",
+
+	// 布局切换按钮
+	switchToGridMode = "switchToGridMode",
+	switchToListMode = "switchToListMode",
 }
 
 export default I18nKey;

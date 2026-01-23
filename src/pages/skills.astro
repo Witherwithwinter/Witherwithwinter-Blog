@@ -286,14 +286,14 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
   }
   
   /* 内容区域宽度 >= 640px：2列 */
-  @container (min-width: 640px) {
+  @container (min-width: 40rem) {
     .skills-grid-container {
       grid-template-columns: repeat(2, 1fr);
     }
   }
   
   /* 内容区域宽度 >= 900px：3列（进一步降低阈值）*/
-  @container (min-width: 900px) {
+  @container (min-width: 56.25rem) {
     .skills-grid-container {
       grid-template-columns: repeat(3, 1fr);
     }

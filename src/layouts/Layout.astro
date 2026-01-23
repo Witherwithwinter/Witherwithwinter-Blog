@@ -274,6 +274,7 @@ if (siteConfig.font) {
 				BANNER_HEIGHT_EXTEND,
 				PAGE_WIDTH,
 				configHue,
+				pageScaling: siteConfig.pageScaling,
 			}}
 		>
 			// Load the theme from local storage
@@ -315,6 +316,43 @@ if (siteConfig.font) {
 				"--banner-height-extend",
 				`${offset}px`,
 			);
+
+			// 自动缩放逻辑 (Moved from MainGridLayout to here for earlier execution)
+			(function() {
+				if (pageScaling && pageScaling.enable) {
+					function adjustPageScale() {
+						const isTouch =
+							(window.matchMedia &&
+								(window.matchMedia("(pointer:coarse)").matches ||
+									window.matchMedia("(hover: none)").matches)) ||
+							("ontouchstart" in window);
+						const isPortrait =
+							window.matchMedia &&
+							window.matchMedia("(orientation: portrait)").matches;
+						const isTabletLike = isTouch || window.innerWidth <= 1280;
+						if (isTabletLike || isPortrait) {
+							document.documentElement.style.fontSize = "";
+							return;
+						}
+						const targetWidth = pageScaling.targetWidth || 2000;
+						const currentWidth = document.documentElement.clientWidth;
+						let scale = currentWidth / targetWidth;
+						if (scale > 1) scale = 1;
+						if (scale < 0.85) scale = 0.85;
+						document.documentElement.style.fontSize = `${scale * 100}%`;
+					}
+
+					// 立即执行一次
+					adjustPageScale();
+					
+					// 监听窗口大小变化
+					window.addEventListener('resize', adjustPageScale);
+					
+					// Swup 页面切换后也需要检查
+					document.addEventListener('swup:page:view', adjustPageScale);
+					window.addEventListener('orientationchange', adjustPageScale);
+				}
+			})();
 		</script>
 		<style
 			define:vars={{
@@ -626,7 +664,7 @@ function disableAnimation() {
 
 			// Handle mobile single image banner - 使用与电脑端相同的逻辑
 			const mobileBanner = document.querySelector(
-				'.block.lg\\:hidden[alt="Mobile banner image of the blog"]',
+				'.block.md\\:hidden[alt="Mobile banner image of the blog"]',
 			);
 			if (mobileBanner && !document.getElementById("banner-carousel")) {
 				// 移动端使用与电脑端相同的初始化逻辑
@@ -646,14 +684,14 @@ function disableAnimation() {
 	function initCarousel() {
 		const carouselItems = document.querySelectorAll(".carousel-item");
 		// 根据屏幕尺寸过滤有效的轮播项
-		const isMobile = window.innerWidth < 1024; // lg breakpoint
+		const isMobile = window.innerWidth < 768; // md breakpoint
 		const validItems = Array.from(carouselItems).filter((item) => {
 			if (isMobile) {
 				// 移动端：只显示有mobile图片的项目
-				return item.querySelector(".block.lg\\:hidden");
+				return item.querySelector(".block.md\\:hidden");
 			} else {
-				// 桌面端：只显示有desktop图片的项目
-				return item.querySelector(".hidden.lg\\:block");
+				// 桌面端/平板端：只显示有desktop图片的项目
+				return item.querySelector(".hidden.md\\:block");
 			}
 		});
 
@@ -1213,11 +1251,28 @@ function disableAnimation() {
 	function scrollFunction() {
 		const scrollTop = document.documentElement.scrollTop;
 		const bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100);
+		
+		// 尝试获取内容区域的起始位置
+		const contentWrapper = document.getElementById('content-wrapper');
+		let showBackToTopThreshold = bannerHeight + 100; // 默认回退值
+
+		if (contentWrapper) {
+			const rect = contentWrapper.getBoundingClientRect();
+			// 当 content-wrapper 的顶部接近视口顶部时显示
+			// rect.top 是相对于视口的，当它小于视口高度的一半时，说明已经滚动到了内容区
+			// 或者更简单：scrollTop > contentWrapper.offsetTop
+			// 由于 offsetTop 是相对于 offsetParent 的，可能需要累加
+			// 这里我们使用 getBoundingClientRect + scrollTop 来获取绝对位置
+			const absoluteTop = rect.top + scrollTop;
+			// 只有当滚动超过内容区域起始位置一定距离后才显示
+			showBackToTopThreshold = absoluteTop - window.innerHeight / 2;
+		}
 
 		// 批量处理DOM操作
 		requestAnimationFrame(() => {
 			if (backToTopBtn) {
-				if (scrollTop > bannerHeight) {
+				// 使用动态计算的阈值
+				if (scrollTop > showBackToTopThreshold) {
 					backToTopBtn.classList.remove("hide");
 				} else {
 					backToTopBtn.classList.add("hide");
@@ -1225,10 +1280,16 @@ function disableAnimation() {
 			}
 
 			if (bannerEnabled && toc) {
-				if (scrollTop > bannerHeight) {
-					toc.classList.remove("toc-hide");
+				const isBannerMode = document.body.classList.contains("enable-banner");
+				if (isBannerMode) {
+					if (scrollTop > bannerHeight) {
+						toc.classList.remove("toc-hide");
+					} else {
+						toc.classList.add("toc-hide");
+					}
 				} else {
-					toc.classList.add("toc-hide");
+					// In Fullscreen or None mode, always show TOC
+					toc.classList.remove("toc-hide");
 				}
 			}
 

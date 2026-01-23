@@ -1,12 +1,17 @@
 <script lang="ts">
-import { DARK_MODE, LIGHT_MODE } from "@constants/constants.ts";
+import { DARK_MODE, LIGHT_MODE, DEFAULT_THEME } from "@constants/constants";
 import Icon from "@iconify/svelte";
-import { getStoredTheme, setTheme } from "@utils/setting-utils.ts";
+import { getStoredTheme, setTheme } from "@utils/setting-utils";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
+import { onMount } from "svelte";
 
 const seq: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE];
-let mode: LIGHT_DARK_MODE = $state(getStoredTheme());
+let mode: LIGHT_DARK_MODE = $state(DEFAULT_THEME);
 let isChanging = false;
+
+onMount(() => {
+    mode = getStoredTheme();
+});
 
 function switchScheme(newMode: LIGHT_DARK_MODE) {
 	// 防止连续快速点击
@@ -71,10 +76,10 @@ if (typeof window !== "undefined") {
 </script>
 
 <div class="relative z-50">
-    <button 
-        aria-label="Light/Dark Mode" 
-        class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90 theme-switch-btn" 
-        id="scheme-switch" 
+    <button
+        aria-label="Light/Dark Mode"
+        class="relative btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90 theme-switch-btn"
+        id="scheme-switch"
         onclick={toggleScheme}
         data-mode={mode}
     >

@@ -1,11 +1,23 @@
-# 🌸 Mizuki  
-![Node.js >= 20](https://img.shields.io/badge/node.js-%3E%3D20-brightgreen) 
-![pnpm >= 9](https://img.shields.io/badge/pnpm-%3E%3D9-blue) 
-![Astro](https://img.shields.io/badge/Astro-5.12.8-orange)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# 🌸 Mizuki <img align='right' src='logo.png' width='200px' alt="Mizuki logo">
 
-![Mizuki Preview](../README.webp)
+[Astro](https://astro.build)をベースにした、先進的な機能と美しいデザインを備えた現代的な静的ブログテンプレートです。
+
+[![Node.js >= 20](https://img.shields.io/badge/node.js-%3E%3D20-brightgreen)](https://nodejs.org/)
+[![pnpm >= 9](https://img.shields.io/badge/pnpm-%3E%3D9-blue)](https://pnpm.io/)
+[![Astro](https://img.shields.io/badge/Astro-5.15.3-orange)](https://astro.build/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue)](https://www.typescriptlang.org/)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg?logo=apache)](https://opensource.org/licenses/Apache-2.0)
+
+[**🖥️ ライブデモ**](https://mizuki.mysqil.com/) | [**📝 ドキュメント**](https://docs.mizuki.mysqil.com/)
+
+🌏 README 言語
+[**English**](./README.md) / [**中文**](./README.zh.md) / [**日本語**](./README.ja.md) / [**中文繁体**](./README.tw.md) /
+
+包括的なドキュメントで素早く始めましょう。テーマのカスタマイズ、機能の設定、本番環境へのデプロイなど、ブログを正常に立ち上げるために必要なすべての情報が網羅されています。
+
+[📚 完全なドキュメントを読む](https://docs.mizuki.mysqil.com/) →
+
+![Mizuki Preview](./README.webp)
 
 <table>
   <tr>
@@ -20,20 +32,18 @@
   <tr>
 </table>
 
-[Astro](https://astro.build)をベースにした、先進的な機能と美しいデザインを備えた現代的な静的ブログテンプレートです。
+## 🚀 NEW: 自動解像度適応
 
-[**🖥️ ライブデモ**](https://mizuki.mysqil.com/)
-[**📝 ドキュメント**](https://docs.mizuki.mysqil.com/)
+> **🎯 自動解像度アルゴリズム** - デバイス画面の解像度に基づいてコンテンツレイアウトをインテリジェントに適応させ、すべてのデバイスで最適な視聴体験を提供
 
 🌏 README 言語
-[**English**](../README.md) /
-[**中文**](../README.zh.md) /
+[**English**](./README.md) /
+[**中文**](./README.zh.md) /
 [**日本語**](./README.ja.md) /
 [**中文繁体**](./README.tw.md) /
 
 
 
-![設定](../configuration.svg)
 
 ### 🔧 コンポーネント設定システムの再構築
 - **統一された設定アーキテクチャ：** 動的コンポーネント管理と順序設定をサポートする全く新しいモジュラーコンポーネント設定システム
@@ -42,8 +52,12 @@
 - **レスポンシブレイアウト適応：** コンポーネントがレスポンシブレイアウトをサポートし、デバイスタイプに基づいて表示を自動調整
 
 ### 📐 レイアウトシステムの最適化
+- **動的サイドバー位置調整：** 左右サイドバーの切り替えをサポートし、レイアウトを自動適応
+- **インテリジェントな記事目次配置：** サイドバーが右側にある場合、記事ナビゲーションが自動的に左側に移動し、より良い読書体験を提供
+- **グリッドレイアウトの改善：** CSS Gridレイアウトを最適化し、コンテナ幅の異常問題を解決
+
 ### 🎛️ 設定ファイル形式の標準化
- - **Umami API キー（任意）：** Umami アナリティクスを使用する場合は、デプロイ先プラットフォームに環境変数 `UMAMI_API_KEY` を設定するか、プロジェクトの設定ファイルに直接キーを記載することを推奨します。
+- **標準化された設定形式：** 統一されたコンポーネント設定ファイル形式仕様を作成
 - **型安全性：** 設定の型安全性を確保する包括的なTypeScript型定義
 - **拡張性：** カスタムコンポーネントタイプと設定オプションのサポート
 
@@ -249,6 +263,45 @@ export const siteConfig: SiteConfig = {
 - **日記ページ：** `src/pages/diary.astro`で瞬間を編集
 - **アバウトページ：** `src/content/spec/about.md`でコンテンツを編集
 
+### 📦 コードとコンテンツの分離（オプション）
+
+Mizukiは、コードとコンテンツを2つの独立したリポジトリに分けて管理することをサポートしており、チーム协作や大規模プロジェクトに適しています。
+
+**簡単選択**:
+
+| 使用シナリオ | 設定方法 | 対象者 |
+|---------|---------|---------|
+| 🆕 **ローカルモード**（デフォルト） | 設定不要、そのまま使用 | 初心者、個人ブログ |
+| 🔧 **分離モード** | `ENABLE_CONTENT_SYNC=true`を設定 | チーム协作、プライベートコンテンツ |
+
+**ワンクリック有効化/無効化**:
+
+```bash
+# 方法 1: ローカルモード（初心者向け）
+# .envファイルを作成せず、そのまま実行
+pnpm dev
+
+# 方法 2: コンテンツ分離モード
+# 1. 設定ファイルをコピー
+cp .env.example .env
+
+# 2. .envを編集してコンテンツ分離を有効化
+ENABLE_CONTENT_SYNC=true
+CONTENT_REPO_URL=https://github.com/your-username/Mizuki-Content.git
+
+# 3. コンテンツを同期
+pnpm run sync-content
+```
+
+**機能**:
+- ✅ パブリックおよびプライベートリポジトリをサポート 🔐
+- ✅ ワンクリックで有効化/無効化、コード修正不要
+- ✅ 自動同期、開発前に最新コンテンツを自動プル
+
+📖 **詳細設定**: [コンテンツ分離完全ガイド](docs/CONTENT_SEPARATION.md)
+🔄 **移行チュートリアル**: [シングルリポジトリから分離モードへ移行](docs/MIGRATION_GUIDE.md)
+📚 **その他のドキュメント**: [ドキュメントインデックス](docs/README.md)
+
 ## ✏️ 貢献
 
 貢献は歓迎します！お気軽に問題やプルリクエストを提出してください。
@@ -261,7 +314,7 @@ export const siteConfig: SiteConfig = {
 
 ## 📄 ライセンス
 
-このプロジェクトはApacheライセンス2.0の下でライセンスされています - 詳細は[LICENSE](../LICENSE)ファイルをご覧ください。
+このプロジェクトはApacheライセンス2.0の下でライセンスされています - 詳細は[LICENSE](./LICENSE)ファイルをご覧ください。
 
 ### 元のプロジェクトライセンス
 
@@ -271,7 +324,7 @@ export const siteConfig: SiteConfig = {
 
 - オリジナルの[Fuwari](https://github.com/saicaca/fuwari)テンプレートをベースにしています
 - [Yukina](https://github.com/WhitePaper233/yukina) - 美しくエレガントなブログテンプレートにインスパイアされました
-- 一部のデザインは[Firefly](https://github.com/CuteLeaf/Firefly)テンプレートからインスピレーションを得ています
+- 一部のデザインは [Firefly](https://github.com/CuteLeaf/Firefly) と [Twilight](https://github.com/spr-aachen/Twilight) テンプレートからインスピレーションを得ています
 - [Pio](https://github.com/Dreamer-Paul/Pio)を使用してかわいいLive2D看板娘プラグインを実装
 - [Astro](https://astro.build)と[Tailwind CSS](https://tailwindcss.com)で構築
 - アイコンは[Iconify](https://iconify.design/)から
@@ -281,6 +334,7 @@ export const siteConfig: SiteConfig = {
 - **[Fuwari](https://github.com/saicaca/fuwari)** by saicaca - このプロジェクトのベースとなるオリジナルテンプレート。このような美しく機能的なテンプレートを作成していただきありがとうございます。
 - **[Yukina](https://github.com/WhitePaper233/yukina)** - このプロジェクトの形成に役立ったデザインのインスピレーションと創造性を提供してくれたことに感謝します。Yukinaは優れたデザイン原則とユーザーエクスペリエンスを示す、エレガントなブログテンプレートです。
 - **[Firefly](https://github.com/CuteLeaf/Firefly)** - 優れたレイアウトデザインのアイデアを提供していただきありがとうございます。デュアルサイドバーレイアウト、記事の2カラムグリッドレイアウト、およびいくつかのウィジェットのデザインと実装により、Mizukiのインターフェースがより豊かになりました。
+- **[Twilight](https://github.com/spr-aachen/Twilight)** - インスピレーションと技術的なサポートを提供していただきありがとうございます。Twilight の動的壁紙モード切り替えシステム、レスポンシブデザイン、およびトランジション効果は、Mizuki のユーザーエクスペリエンスを大幅に向上させました。
 
 ## 🍀 コントリビューター
 
