@@ -466,7 +466,7 @@ export const shareConfig: ShareConfig = {
 export const announcementConfig: AnnouncementConfig = {
 	title: "Announcement", // 公告标题
 	content:
-		"欢迎来到我的博客！这里分享我的个人生活与学习日常！\n（如果阅读文章时看不到右侧边栏目录，请缩小网站比例）", // 公告内容
+		"欢迎来到我的博客！这里分享我的个人生活与学习日常！\n（如果网页端阅读文章时看不到右侧边栏目录，请缩小网站比例）", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: true, // 启用链接
