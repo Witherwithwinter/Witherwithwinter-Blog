@@ -26,4 +26,14 @@ QQ： 3616596186
 },
 ```
 
+本站信息：
 
+```json
+{
+    title: "Witherwithwinter-Blog",
+    imgurl: "https://raw.githubusercontent.com/Witherwithwinter/witherwithwinter.github.io/refs/heads/main/src/assets/images/avatar.webp",
+    desc: "纵观五域两天，我只悟出两个字————坚持！",
+    siteurl: "https://witherwithwinter.github.io/",
+    tags: ["Blog", "Algorithm"],
+}
+```
