@@ -79,7 +79,7 @@ export const friendsData: FriendItem[] = [
 	{
 		id: 4,
 		title: "chengzisoft",
-        imgurl: "https://earthcake.oss-cn-beijing.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E5%A4%B4%E5%83%8F.jpg",
+        imgurl: "https://earthcake.oss-cn-beijing.aliyuncs.com/anno.jpg",
 		desc: "世界拯救技术宅",
         siteurl: "https://www.chengzisoft.top",
         tags: ["Blog", "Technology"],
